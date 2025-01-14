@@ -5,8 +5,8 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Attach",
-            "port": 5000,
+            "name": "Attach by Process ID",
+            "processId": "${command:PickProcess}",
             "request": "attach",
             "skipFiles": [
                 "<node_internals>/**"
@@ -14,18 +14,13 @@
             "type": "node"
         },
         {
-            "name": "Attach to Chrome",
-            "port": 5000,
-            "request": "attach",
-            "type": "chrome",
-            "webRoot": "${workspaceFolder}"
-        },
-        {
-            "type": "chrome",
+            "type": "node",
             "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "http://localhost:5000",
-            "webRoot": "${workspaceFolder}"
+            "name": "Launch Program",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${file}"
         }
     ]
 }
