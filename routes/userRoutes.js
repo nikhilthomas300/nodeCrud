@@ -30,10 +30,10 @@ router.get('/:id', async (req, res) => {
 // Create user
 router.post('/', async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { username, email, password, role } = req.body;
     
     // Validate required fields
-    if (!username || !email || !password) {
+    if (!username || !email || !password || !role) {
       return res.status(400).json({ message: 'Please provide all required fields' });
     }
 
@@ -45,7 +45,8 @@ router.post('/', async (req, res) => {
     const user = await User.create({
       username,
       email,
-      password
+      password,
+      role
     });
 
     res.status(201).json({
